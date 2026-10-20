@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tùy chỉnh thanh tiêu đề (Mini Task Manager) màu xanh nhẹ nhàng đồng bộ */
+header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #ebf5fb; /* Nền xanh dương nhẹ nhàng */
+    color: #2980b9;            /* Màu chữ xanh đậm hơn chút cho dễ nhìn */
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 22px;
+    border: 1px solid #d4e6f1;
+}
+
+.form-section, .filter-section {
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input, 
+.form-group select, 
+.filter-section input, 
+.filter-section select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 4px rgba(52, 152, 219, 0.3);
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+#add-btn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+#add-btn:hover, #add-btn:focus {
+    background-color: #27ae60;
+}
+
+.filter-section {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-section input {
+    flex: 2;
+}
+
+.filter-section select {
+    flex: 1;
+}
+
+.list-section {
+    max-height: 320px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding-top: 10px;
+}
+
+#task-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8px;
+    border-bottom: 1px solid #f9f9f9;
+    gap: 15px;
+    word-break: break-word;
+}
+
+.task-info {
+    flex: 1;
+}
+
+.task-info h3 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.task-info p {
+    font-size: 13px;
+    color: #666;
+}
+
+.task-item.completed .task-info h3 {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.priority-Cao {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.priority-Trung {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.priority-Thấp {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.task-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.task-actions button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-toggle {
+    background-color: #3498db;
+    color: white;
+}
+.btn-toggle:hover {
+    background-color: #2980b9;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+footer {
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+    padding-top: 8px;
+}
+
+/* Responsive cho thiết bị di động khoảng 375px hoặc nhỏ hơn */
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    .container {
+        padding: 12px;
+        border-radius: 6px;
+    }
+
+    .filter-section {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .filter-section input, 
+    .filter-section select {
+        width: 100%;
+    }
+
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .task-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    header h1 {
+        font-size: 18px;
+        padding: 10px;
+    }
+}
