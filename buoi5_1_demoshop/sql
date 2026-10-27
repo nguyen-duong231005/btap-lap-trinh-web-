@@ -1,0 +1,33 @@
+-- Tạo cơ sở dữ liệu nếu chưa tồn tại
+CREATE DATABASE IF NOT EXISTS shopdemo
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Sử dụng cơ sở dữ liệu vừa tạo
+USE shopdemo;
+
+-- 1. Bảng quản lý người dùng (users)
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    full_name VARCHAR(120) NOT NULL,
+    role ENUM('admin','staff','customer') NOT NULL,
+    status ENUM('active','locked') NOT NULL DEFAULT 'active'
+) ENGINE=InnoDB;
+
+-- 2. Bảng quản lý sản phẩm (products)
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    description TEXT,
+    status ENUM('active', 'inactive') NOT NULL DEFAULT 'active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+-- 3. Dữ liệu mẫu cho bảng products để giảng viên/người chấm chạy thử
+INSERT INTO products (name, price, stock, description, status) VALUES
+('Laptop Gaming ASUS', 25000000.00, 10, 'Laptop hiệu năng cao cho game thủ và lập trình viên', 'active'),
+('Bàn phím cơ Keychron', 1850000.00, 25, 'Bàn phím cơ wireless switch êm ái', 'active'),
+('Chuột Logitech G102', 450000.00, 50, 'Chuột gaming quốc dân', 'active');
